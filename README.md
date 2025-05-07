@@ -1,54 +1,97 @@
-# React + TypeScript + Vite
+# 🛒 Carrinho de Compras
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação web de **lista de desejos / compras** desenvolvida com **React**, estilizada com **Tailwind CSS**, e integrando uma API mockada com **JSON Server**. O projeto simula um sistema de carrinho de compras com funcionalidades completas, incluindo **listagem**, **visualização de detalhes**, **adição ao carrinho** e **remoção de produtos**.
 
-Currently, two official plugins are available:
+## 🔧 Tecnologias Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React.js** – Interface interativa e reativa
+- **Tailwind CSS** – Estilização moderna e responsiva
+- **Axios** – Consumo de API REST
+- **JSON Server** – Simulação de backend local
+- **React Router Dom** – Navegação entre páginas
+- **React Hooks (useState, useEffect)** – Gerenciamento de estado
 
-## Expanding the ESLint configuration
+## ✨ Funcionalidades
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- ✅ Listagem de produtos via API simulada
+- ✅ Visualização de **detalhes do produto**
+- ✅ Adição e remoção de produtos do carrinho
+- ✅ Visualização do carrinho com atualização dinâmica
+- ✅ Estilização responsiva com Tailwind CSS
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## ▶️ Como Executar o Projeto
+
+### 1. Clone o repositório
+
+```bash
+git clone https://github.com/AndreessaLopes/carrinho
+cd carrinho
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Instale as dependências
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm install
 ```
+
+### 3. Inicie o servidor da API (JSON Server)
+
+```bash
+npx json-server --watch db.json
+```
+
+Esse comando iniciará a API no endereço: `http://localhost:3000`.
+
+> ⚠️ Certifique-se de que o arquivo `db.json` está na raiz do projeto e contém os dados necessários.
+
+### 4. Execute a aplicação
+
+```bash
+npm run dev
+```
+
+A aplicação será iniciada em: `http://localhost:5173` (ou outra porta conforme seu ambiente).
+
+## 📁 Estrutura de Arquivos
+
+```
+src/
+├── components/        # Componentes reutilizáveis (cards, botões, etc)
+├── pages/             # Páginas da aplicação (Home, Detalhes, Carrinho)
+├── services/          # Configuração da API
+│   └── api.ts         # Axios com baseURL para JSON Server
+├── App.tsx            # Componente principal com rotas
+├── main.tsx           # Entrada da aplicação
+└── db.json            # Banco de dados simulado (JSON Server)
+```
+
+## 💡 Exemplo de Código da API
+
+```ts
+// src/services/api.ts
+
+import axios from "axios";
+
+export const api = axios.create({
+  baseURL: "http://localhost:3000",
+});
+```
+
+## 🖼️ Capturas de Tela
+
+### 📌 Listagem de Produtos
+
+![Listagem](public/screenshots/listagem.png)
+
+### 🔍 Detalhes do Produto
+
+![Detalhes](public/screenshots/detalhes.png)
+
+### 🛍️ Carrinho com Itens
+
+![Carrinho](public/screenshots/carrinho.png)
+
+## 📄 Licença
+
+Este projeto está licenciado sob a licença MIT.  
+Sinta-se livre para usar, estudar, modificar e compartilhar.
